@@ -12,7 +12,7 @@ const Navbar = () => {
         </Link>
         <div className="flex items-center space-x-4">
           <ThemeToggle />
-          <UserButton />
+          <UserButton afterSignOutUrl="/" />
         </div>
       </nav>
       <Separator />
