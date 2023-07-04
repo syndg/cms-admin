@@ -60,7 +60,7 @@ export const PostForm: React.FC<PostFormProps> = ({ initialData }) => {
     try {
       setIsLoading(true);
       if (initialData) {
-        await axios.patch(`api/posts/${params.postId}`, data);
+        await axios.patch(`/api/posts/${params.postId}`, data);
       } else {
         await axios.post("/api/posts", data);
       }
