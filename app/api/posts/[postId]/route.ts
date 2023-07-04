@@ -3,34 +3,6 @@ import { auth } from "@clerk/nextjs";
 
 import prismadb from "@/lib/prismadb";
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { postId: string } }
-) {
-  try {
-    const { userId } = auth();
-
-    if (!userId) {
-      return new NextResponse("Unauthorized", { status: 403 });
-    }
-
-    if (!params.postId) {
-      return new NextResponse("Post not found", { status: 404 });
-    }
-
-    const post = await prismadb.post.delete({
-      where: {
-        id: params.postId,
-      },
-    });
-
-    return NextResponse.json(post);
-  } catch (error) {
-    console.log("[POST_DELETE", error);
-    return new NextResponse("Internal error", { status: 500 });
-  }
-}
-
 export async function PATCH(
   req: Request,
   { params }: { params: { postId: string } }
@@ -68,6 +40,34 @@ export async function PATCH(
     return NextResponse.json(post);
   } catch (error) {
     console.log("[POST_PATCH]", error);
+    return new NextResponse("Internal error", { status: 500 });
+  }
+}
+
+export async function DELETE(
+  req: Request,
+  { params }: { params: { postId: string } }
+) {
+  try {
+    const { userId } = auth();
+
+    if (!userId) {
+      return new NextResponse("Unauthorized", { status: 403 });
+    }
+
+    if (!params.postId) {
+      return new NextResponse("Post not found", { status: 404 });
+    }
+
+    const post = await prismadb.post.delete({
+      where: {
+        id: params.postId,
+      },
+    });
+
+    return NextResponse.json(post);
+  } catch (error) {
+    console.log("[POST_DELETE", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }
