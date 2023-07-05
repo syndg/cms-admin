@@ -5,7 +5,6 @@ import Link from "next/link";
 
 export default async function HomePage() {
   const posts = await prismadb.post.findMany();
-  console.log(posts);
 
   if (posts.length === 0) {
     return (
