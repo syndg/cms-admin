@@ -10,7 +10,7 @@ const PostPage = async ({ params }: { params: { postId: string } }) => {
   });
 
   return (
-    <div className="flex-col">
+    <div className="flex-col max-w-[1400px] mx-auto">
       <div className="flex-1 space-y-4 px-4 pt-6">
         <PostForm initialData={post} />
       </div>

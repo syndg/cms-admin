@@ -27,7 +27,7 @@ import { AlertModal } from "@/components/alert-modal";
 
 const formSchema = z.object({
   title: z.string().min(2),
-  content: z.string().min(4).max(100),
+  content: z.string().min(4).max(150),
 });
 
 type PostFormValues = z.infer<typeof formSchema>;
@@ -100,7 +100,7 @@ export const PostForm: React.FC<PostFormProps> = ({ initialData }) => {
         onConfirm={onDelete}
         loading={isLoading}
       />
-      <div className="flex items-center justify-between max-w-[1400px] mx-auto">
+      <div className="flex items-center justify-between">
         <Heading title={title} description={description} />
         {initialData && (
           <Button
@@ -117,15 +117,15 @@ export const PostForm: React.FC<PostFormProps> = ({ initialData }) => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-8 w-full max-w-[1400px] mx-auto"
+          className="space-y-8 w-full"
         >
-          <div className="md:grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-4">
             <FormField
               control={form.control}
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Title</FormLabel>
+                  <FormLabel className="text-md font-semibold">Title</FormLabel>
                   <FormControl>
                     <Input
                       disabled={isLoading}
@@ -142,7 +142,9 @@ export const PostForm: React.FC<PostFormProps> = ({ initialData }) => {
               name="content"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Content</FormLabel>
+                  <FormLabel className="text-md font-semibold">
+                    Content
+                  </FormLabel>
                   <FormControl>
                     <Input
                       disabled={isLoading}
