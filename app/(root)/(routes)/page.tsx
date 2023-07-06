@@ -41,7 +41,7 @@ export default async function HomePage() {
             href={`/posts/${post.id}`}
             className="px-4 py-2 rounded-md border hover:bg-accent"
           >
-            <p className="text-lg font-semibold">{post.title}</p>
+            <p className="text-2xl font-semibold">{post.title}</p>
             <p>{post.content}</p>
           </Link>
         ))}
