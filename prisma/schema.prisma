@@ -12,10 +12,22 @@ datasource db {
 }
 
 model Post {
+  id         String   @id @default(uuid())
+  name       String
+  title      String
+  content    String
+  categoryId String // Foreign key to category
+  category   Category @relation(fields: [categoryId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([categoryId])
+}
+
+model Category {
   id        String   @id @default(uuid())
-  name      String
-  title     String
-  content   String
+  name      String   @unique
+  post      Post[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

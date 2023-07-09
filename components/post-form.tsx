@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Trash } from "lucide-react";
-import { Post } from "@prisma/client";
+import { Category, Post } from "@prisma/client";
 import { useParams, useRouter } from "next/navigation";
 
 import { Input } from "@/components/ui/input";
@@ -24,19 +24,31 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Heading } from "@/components/heading";
 import { AlertModal } from "@/components/alert-modal";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const formSchema = z.object({
   title: z.string().min(2),
   content: z.string().min(4).max(150),
+  categoryId: z.string(),
 });
 
 type PostFormValues = z.infer<typeof formSchema>;
 
 interface PostFormProps {
   initialData: Post | null;
+  categories: Category[];
 }
 
-export const PostForm: React.FC<PostFormProps> = ({ initialData }) => {
+export const PostForm: React.FC<PostFormProps> = ({
+  initialData,
+  categories,
+}) => {
   const params = useParams();
   const router = useRouter();
 
@@ -152,6 +164,40 @@ export const PostForm: React.FC<PostFormProps> = ({ initialData }) => {
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="categoryId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-md font-semibold">
+                    Category
+                  </FormLabel>
+                  <Select
+                    disabled={isLoading}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue
+                          defaultValue={field.value}
+                          placeholder="Select a category"
+                        />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {categories.map((category) => (
+                        <SelectItem key={category.id} value={category.id}>
+                          {category.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}

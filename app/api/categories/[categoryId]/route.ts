@@ -5,49 +5,43 @@ import prismadb from "@/lib/prismadb";
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { postId: string } }
+  { params }: { params: { categoryId: string } }
 ) {
   try {
     const { userId } = auth();
     const body = await req.json();
-    const { title, content, categoryId } = body;
+    const { name } = body;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    if (!title) {
-      return new NextResponse("Title is required", { status: 400 });
+    if (!name) {
+      return new NextResponse("Name is required", { status: 400 });
     }
 
-    if (!content) {
-      return new NextResponse("Content is required", { status: 400 });
-    }
-
-    if (!params.postId) {
+    if (!params.categoryId) {
       return new NextResponse("Post not found", { status: 404 });
     }
 
-    const post = await prismadb.post.update({
+    const category = await prismadb.category.update({
       where: {
-        id: params.postId,
+        id: params.categoryId,
       },
       data: {
-        title,
-        content,
-        categoryId,
+        name,
       },
     });
-    return NextResponse.json(post);
+    return NextResponse.json(category);
   } catch (error) {
-    console.log("[POST_PATCH]", error);
+    console.log("[CATEGORY_PATCH]", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { postId: string } }
+  { params }: { params: { categoryId: string } }
 ) {
   try {
     const { userId } = auth();
@@ -56,19 +50,19 @@ export async function DELETE(
       return new NextResponse("Unauthorized", { status: 403 });
     }
 
-    if (!params.postId) {
+    if (!params.categoryId) {
       return new NextResponse("Post not found", { status: 404 });
     }
 
-    const post = await prismadb.post.delete({
+    const category = await prismadb.category.delete({
       where: {
-        id: params.postId,
+        id: params.categoryId,
       },
     });
 
-    return NextResponse.json(post);
+    return NextResponse.json(category);
   } catch (error) {
-    console.log("[POST_DELETE", error);
+    console.log("[CATEGORY_DELETE", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }

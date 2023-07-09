@@ -11,6 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Separator } from "./ui/separator";
 
 export function ThemeToggle() {
   const { setTheme } = useTheme();
@@ -24,13 +25,15 @@ export function ThemeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" sideOffset={8} className="w-[200px]">
+      <DropdownMenuContent align="end" sideOffset={8} className="w-[200px] p-2">
         <DropdownMenuItem onClick={() => setTheme("light")}>
           Light
         </DropdownMenuItem>
+        <Separator className="my-2" />
         <DropdownMenuItem onClick={() => setTheme("dark")}>
           Dark
         </DropdownMenuItem>
+        <Separator className="my-2" />
         <DropdownMenuItem onClick={() => setTheme("system")}>
           System
         </DropdownMenuItem>
