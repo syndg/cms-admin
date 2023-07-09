@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
+import AddNew from "@/components/add-new";
 
 const CategoryPage = async () => {
   const categories = await prismadb.category.findMany();
@@ -22,27 +23,7 @@ const CategoryPage = async () => {
           <Link href="/">
             <Button variant="outline">View posts</Button>
           </Link>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline">
-                <Plus className="w-4 h-4" />
-                <span className="sr-only">Add new</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="end"
-              sideOffset={8}
-              className="w-[200px] p-2"
-            >
-              <DropdownMenuItem asChild>
-                <Link href="/posts/new">New post</Link>
-              </DropdownMenuItem>
-              <Separator className="my-2" />
-              <DropdownMenuItem asChild>
-                <Link href="/categories/new">New category</Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <AddNew />
         </div>
       </div>
       <Separator />
