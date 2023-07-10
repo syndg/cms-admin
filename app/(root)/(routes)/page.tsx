@@ -1,11 +1,9 @@
-import { Button } from "@/components/ui/button";
 import prismadb from "@/lib/prismadb";
-import { Plus } from "lucide-react";
 import Link from "next/link";
 
-import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import AddNew from "@/components/add-new";
+import { AddNew } from "@/components/add-new";
+import { Menubar } from "@/components/MenuBar";
 
 export default async function HomePage() {
   const posts = await prismadb.post.findMany({
@@ -19,23 +17,18 @@ export default async function HomePage() {
     return (
       <section className="py-12 grid place-content-center space-y-6 max-w-[1400px]">
         <h1 className="font-semibold text-2xl">No new posts</h1>
-        <AddNew />
+        <AddNew align="center" />
       </section>
     );
   }
 
   return (
     <section className="grid space-y-4 px-4 py-10 w-screen max-w-[1400px] mx-auto">
-      <div className="flex justify-between items-center">
-        <h1 className="font-semibold text-2xl">Posts</h1>
-        <div className="flex space-x-4">
-          <Link href="/categories">
-            <Button variant="outline">View categories</Button>
-          </Link>
-          <AddNew />
-        </div>
-      </div>
-      <Separator />
+      <Menubar
+        heading="Posts"
+        viewButtonText="View Categories"
+        viewButtonhref="/categories"
+      />
       <div className="grid space-y-4">
         {posts.map((post) => (
           <Link

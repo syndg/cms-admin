@@ -10,7 +10,11 @@ import { Separator } from "@/components/ui/separator";
 
 import Link from "next/link";
 
-const AddNew: React.FC = () => {
+interface AddNewProps {
+  align?: "center" | "start" | "end" | undefined;
+}
+
+export const AddNew: React.FC<AddNewProps> = ({ align = "end" }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -19,7 +23,11 @@ const AddNew: React.FC = () => {
           <span className="sr-only">Add new</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent sideOffset={8} className="w-[200px] p-2" align="end">
+      <DropdownMenuContent
+        sideOffset={8}
+        className="w-[200px] p-2"
+        align={align}
+      >
         <DropdownMenuItem asChild>
           <Link href="/posts/new">New post</Link>
         </DropdownMenuItem>
@@ -31,5 +39,3 @@ const AddNew: React.FC = () => {
     </DropdownMenu>
   );
 };
-
-export default AddNew;
