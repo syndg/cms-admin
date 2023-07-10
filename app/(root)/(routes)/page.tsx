@@ -38,7 +38,7 @@ export default async function HomePage() {
           >
             <p className="text-2xl leading-6 font-semibold">{title}</p>
             <p className="text-slate-100/60">{content}</p>
-            <Badge variant="outline" className="rounded-xl">
+            <Badge variant="secondary" className="rounded-xl">
               {category.name}
             </Badge>
           </Link>
