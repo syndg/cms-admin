@@ -30,16 +30,16 @@ export default async function HomePage() {
         viewButtonhref="/categories"
       />
       <div className="grid space-y-4">
-        {posts.map((post) => (
+        {posts.map(({ id, title, content, category }) => (
           <Link
-            key={post.id}
-            href={`/posts/${post.id}`}
+            key={id}
+            href={`/posts/${id}`}
             className="px-4 py-3 space-y-2  rounded-md border hover:bg-accent"
           >
-            <p className="text-2xl leading-6 font-semibold">{post.title}</p>
-            <p className="text-slate-100/60">{post.content}</p>
+            <p className="text-2xl leading-6 font-semibold">{title}</p>
+            <p className="text-slate-100/60">{content}</p>
             <Badge variant="outline" className="rounded-xl">
-              {post.category.name}
+              {category.name}
             </Badge>
           </Link>
         ))}
