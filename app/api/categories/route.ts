@@ -19,18 +19,20 @@ export async function POST(req: Request) {
 
     return NextResponse.json(post);
   } catch (error) {
-    console.log("Posts", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }
 
 export async function GET(req: Request) {
   try {
-    const posts = await prismadb.category.findMany();
+    const posts = await prismadb.category.findMany({
+      include: {
+        post: true,
+      },
+    });
 
     return NextResponse.json(posts);
   } catch (error) {
-    console.log("[POST_GET]", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }

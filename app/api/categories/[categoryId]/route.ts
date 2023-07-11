@@ -66,3 +66,20 @@ export async function DELETE(
     return new NextResponse("Internal error", { status: 500 });
   }
 }
+
+export async function GET(
+  req: Request,
+  { params }: { params: { categoryId: string } }
+) {
+  try {
+    const posts = await prismadb.post.findMany({
+      where: {
+        categoryId: params.categoryId,
+      },
+    });
+
+    return NextResponse.json(posts);
+  } catch (error) {
+    return new NextResponse("Internal error", { status: 500 });
+  }
+}

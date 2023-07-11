@@ -31,11 +31,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import ImageUpload from "@/components/image-upload";
 
 const formSchema = z.object({
   title: z.string().min(2),
   content: z.string().min(4).max(150),
   categoryId: z.string(),
+  imageUrl: z.string(),
 });
 
 type PostFormValues = z.infer<typeof formSchema>;
@@ -65,6 +67,7 @@ export const PostForm: React.FC<PostFormProps> = ({
     defaultValues: initialData || {
       title: "",
       content: "",
+      imageUrl: "",
     },
   });
 
@@ -131,6 +134,24 @@ export const PostForm: React.FC<PostFormProps> = ({
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-8 w-full"
         >
+          <FormField
+            control={form.control}
+            name="imageUrl"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Background image</FormLabel>
+                <FormControl>
+                  <ImageUpload
+                    value={field.value ? [field.value] : []}
+                    disabled={isLoading}
+                    onChange={(url) => field.onChange(url)}
+                    onRemove={() => field.onChange("")}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <div className="grid md:grid-cols-3 gap-4">
             <FormField
               control={form.control}

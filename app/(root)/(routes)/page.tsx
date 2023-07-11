@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { AddNew } from "@/components/add-new";
 import { Menubar } from "@/components/MenuBar";
+import { PostCard } from "@/components/post-card";
 
 export default async function HomePage() {
   const posts = await prismadb.post.findMany({
@@ -29,19 +30,16 @@ export default async function HomePage() {
         viewButtonText="View Categories"
         viewButtonhref="/categories"
       />
-      <div className="grid space-y-4">
-        {posts.map(({ id, title, content, category }) => (
-          <Link
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {posts.map(({ id, title, content, category, imageUrl }) => (
+          <PostCard
             key={id}
-            href={`/posts/${id}`}
-            className="px-4 py-3 space-y-2  rounded-md border hover:bg-accent"
-          >
-            <p className="text-2xl leading-6 font-semibold">{title}</p>
-            <p className="text-slate-100/60">{content}</p>
-            <Badge variant="secondary" className="rounded-xl">
-              {category.name}
-            </Badge>
-          </Link>
+            id={id}
+            title={title}
+            category={category}
+            content={content}
+            imageUrl={imageUrl}
+          />
         ))}
       </div>
     </section>

@@ -1,11 +1,11 @@
 import { Navbar } from "@/components/navbar";
-import { auth } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-const HomeLayout = ({ children }: { children: React.ReactNode }) => {
-  const { userId } = auth();
+const HomeLayout = async ({ children }: { children: React.ReactNode }) => {
+  const user = await currentUser();
 
-  if (!userId) {
+  if (!user) {
     redirect("/sign-in");
   }
   return (

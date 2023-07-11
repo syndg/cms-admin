@@ -16,6 +16,7 @@ model Post {
   name       String
   title      String
   content    String
+  imageUrl   String
   categoryId String // Foreign key to category
   category   Category @relation(fields: [categoryId], references: [id])
   createdAt  DateTime @default(now())
