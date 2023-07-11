@@ -33,7 +33,7 @@ export const PostCard: React.FC<PostCardProps> = ({
       <Card>
         <CardHeader className="p-4">
           <div className="relative overflow-hidden rounded-md h-52">
-            <Image src={imageUrl} alt="post-card" fill />
+            <Image src={imageUrl} className="object-cover" alt="post-card" fill />
           </div>
         </CardHeader>
         <CardContent>
