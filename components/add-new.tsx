@@ -28,11 +28,11 @@ export const AddNew: React.FC<AddNewProps> = ({ align = "end" }) => {
         className="w-[200px] p-2 backdrop-blur-md bg-slate-50/80 dark:bg-slate-950/80"
         align={align}
       >
-        <DropdownMenuItem asChild>
+        <DropdownMenuItem className="hover:bg-slate-600/70" asChild>
           <Link href="/posts/new">New post</Link>
         </DropdownMenuItem>
         <Separator className="my-2" />
-        <DropdownMenuItem asChild>
+        <DropdownMenuItem className="hover:bg-slate-600/70" asChild>
           <Link href="/categories/new">New category</Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
