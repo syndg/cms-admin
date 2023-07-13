@@ -33,7 +33,7 @@ export function ThemeToggle() {
       <DropdownMenuContent
         align="end"
         sideOffset={8}
-        className="w-[200px] p-[0.35rem] space-y-1 backdrop-blur-md bg-slate-50/80 dark:bg-slate-950/80 dark:text-slate-300"
+        className="w-[200px] p-[0.35rem] backdrop-blur-md bg-slate-50/80 dark:bg-slate-950/80 dark:text-slate-300"
       >
         {toggleItems.map(({ label, value, icon }, id) => (
           <DropdownMenuItem

@@ -25,11 +25,11 @@ export const AddNew: React.FC<AddNewProps> = ({ align = "end" }) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         sideOffset={8}
-        className="w-[200px] p-[0.35rem] backdrop-blur-md bg-slate-50/80 dark:bg-slate-950/80 dark:text-slate-300"
+        className="w-[200px] p-[0.35rem] backdrop-blur-md dark:bg-slate-950/80 dark:text-slate-300"
         align={align}
       >
         <DropdownMenuItem
-          className="py-2 dark:hover:bg-slate-600/70 flex justify-between items-center active:scale-[0.95]"
+          className="py-2 hover:dark:bg-slate-600/40 flex justify-between items-center active:scale-[0.95]"
           asChild
         >
           <Link href="/posts/new">
@@ -37,9 +37,9 @@ export const AddNew: React.FC<AddNewProps> = ({ align = "end" }) => {
             <PlusSquare size={20} />
           </Link>
         </DropdownMenuItem>
-        <Separator className="my-2" />
+        <Separator className="my-[6px]" />
         <DropdownMenuItem
-          className="py-2 dark:hover:bg-slate-600/70 flex justify-between items-center active:scale-[0.95]"
+          className="py-2 dark:hover:bg-slate-600/40 flex justify-between items-center active:scale-[0.95]"
           asChild
         >
           <Link href="/categories/new">

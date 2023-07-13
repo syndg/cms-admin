@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const Navbar: React.FC = () => {
   return (
-    <header className="sticky z-30 top-0 backdrop-blur-lg bg-slate-50/80 dark:bg-slate-950/90">
+    <header className="sticky z-30 top-0 backdrop-blur-lg bg-slate-50/20 dark:bg-slate-950/90">
       <nav className="flex items-center justify-between px-4 py-[0.6rem] max-w-[1400px] mx-auto">
         <Link href="/" className="font-bold text-[25px]">
           Dashboard
