@@ -24,7 +24,7 @@ export default async function HomePage() {
   }
 
   return (
-    <section className="grid space-y-4 px-4 py-8 w-screen max-w-[1400px] mx-auto">
+    <section className="grid space-y-4 px-4 py-10 w-screen max-w-[1400px] mx-auto">
       <Menubar
         heading="Posts"
         viewButtonText="View Categories"
@@ -41,6 +41,9 @@ export default async function HomePage() {
             imageUrl={imageUrl}
           />
         ))}
+      </div>
+      <div className="flex justify-center md:hidden">
+        <AddNew align="center" />
       </div>
     </section>
   );

@@ -4,14 +4,14 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
 } from "@/components/ui/dropdown-menu";
-import { Plus } from "lucide-react";
+import { Plus, PlusSquare, FolderPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
 import Link from "next/link";
 
 interface AddNewProps {
-  align?: "center" | "start" | "end" | undefined;
+  align?: "center" | "start" | "end";
 }
 
 export const AddNew: React.FC<AddNewProps> = ({ align = "end" }) => {
@@ -25,15 +25,27 @@ export const AddNew: React.FC<AddNewProps> = ({ align = "end" }) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         sideOffset={8}
-        className="w-[200px] p-2 backdrop-blur-md bg-slate-50/80 dark:bg-slate-950/80"
+        className="w-[200px] p-[0.35rem] backdrop-blur-md bg-slate-50/80 dark:bg-slate-950/80"
         align={align}
       >
-        <DropdownMenuItem className="hover:bg-slate-600/70" asChild>
-          <Link href="/posts/new">New post</Link>
+        <DropdownMenuItem
+          className="py-2 dark:hover:bg-slate-600/70 flex justify-between items-center"
+          asChild
+        >
+          <Link href="/posts/new">
+            New post
+            <PlusSquare size={20} />
+          </Link>
         </DropdownMenuItem>
         <Separator className="my-2" />
-        <DropdownMenuItem className="hover:bg-slate-600/70" asChild>
-          <Link href="/categories/new">New category</Link>
+        <DropdownMenuItem
+          className="py-2 dark:hover:bg-slate-600/70 flex justify-between items-center"
+          asChild
+        >
+          <Link href="/categories/new">
+            New category
+            <FolderPlus size={20} />
+          </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

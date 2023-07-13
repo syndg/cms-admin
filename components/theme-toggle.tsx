@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Laptop } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Separator } from "./ui/separator";
+
+const toggleItems = [
+  { label: "Light", value: "light", icon: <Sun size={20} /> },
+  { label: "Dark", value: "dark", icon: <Moon size={20} /> },
+  { label: "System", value: "system", icon: <Laptop size={20} /> },
+];
 
 export function ThemeToggle() {
   const { setTheme } = useTheme();
@@ -32,19 +37,18 @@ export function ThemeToggle() {
       <DropdownMenuContent
         align="end"
         sideOffset={8}
-        className="w-[200px] p-2 backdrop-blur-md bg-slate-50/80 dark:bg-slate-950/80"
+        className="w-[180px] p-[0.35rem] space-y-1 backdrop-blur-md bg-slate-50/80 dark:bg-slate-950/80"
       >
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <Separator className="my-2" />
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <Separator className="my-2" />
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
+        {toggleItems.map(({ label, value, icon }, id) => (
+          <DropdownMenuItem
+            key={id}
+            className="flex justify-between items-center py-[0.6rem] font-medium text-sm hover:dark:bg-slate-700/40"
+            onClick={() => setTheme(value)}
+          >
+            {label}
+            {icon}
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );
