@@ -38,7 +38,7 @@ export function ThemeToggle() {
         {toggleItems.map(({ label, value, icon }, id) => (
           <DropdownMenuItem
             key={id}
-            className="flex justify-between items-center py-[0.6rem] font-medium text-[16px] hover:dark:bg-slate-700/40"
+            className="flex justify-between items-center py-[0.4rem] font-medium text-[16px] hover:dark:bg-slate-700/40"
             onClick={() => setTheme(value)}
           >
             {label}

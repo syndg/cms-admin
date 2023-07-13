@@ -29,7 +29,7 @@ export const AddNew: React.FC<AddNewProps> = ({ align = "end" }) => {
         align={align}
       >
         <DropdownMenuItem
-          className="py-2 dark:hover:bg-slate-600/70 flex justify-between items-center"
+          className="py-2 dark:hover:bg-slate-600/70 flex justify-between items-center active:scale-[0.95]"
           asChild
         >
           <Link href="/posts/new">
@@ -39,7 +39,7 @@ export const AddNew: React.FC<AddNewProps> = ({ align = "end" }) => {
         </DropdownMenuItem>
         <Separator className="my-2" />
         <DropdownMenuItem
-          className="py-2 dark:hover:bg-slate-600/70 flex justify-between items-center"
+          className="py-2 dark:hover:bg-slate-600/70 flex justify-between items-center active:scale-[0.95]"
           asChild
         >
           <Link href="/categories/new">
