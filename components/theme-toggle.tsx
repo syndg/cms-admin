@@ -24,11 +24,7 @@ export function ThemeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          size="icon"
-          className="bg-transparent dark:border-slate-700"
-        >
+        <Button variant="outline" size="icon" className="bg-transparent">
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
@@ -37,12 +33,12 @@ export function ThemeToggle() {
       <DropdownMenuContent
         align="end"
         sideOffset={8}
-        className="w-[180px] p-[0.35rem] space-y-1 backdrop-blur-md bg-slate-50/80 dark:bg-slate-950/80"
+        className="w-[200px] p-[0.35rem] space-y-1 backdrop-blur-md bg-slate-50/80 dark:bg-slate-950/80 dark:text-slate-300"
       >
         {toggleItems.map(({ label, value, icon }, id) => (
           <DropdownMenuItem
             key={id}
-            className="flex justify-between items-center py-[0.6rem] font-medium text-sm hover:dark:bg-slate-700/40"
+            className="flex justify-between items-center py-[0.6rem] font-medium text-[16px] hover:dark:bg-slate-700/40"
             onClick={() => setTheme(value)}
           >
             {label}

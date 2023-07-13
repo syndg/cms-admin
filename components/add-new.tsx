@@ -25,7 +25,7 @@ export const AddNew: React.FC<AddNewProps> = ({ align = "end" }) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         sideOffset={8}
-        className="w-[200px] p-[0.35rem] backdrop-blur-md bg-slate-50/80 dark:bg-slate-950/80"
+        className="w-[200px] p-[0.35rem] backdrop-blur-md bg-slate-50/80 dark:bg-slate-950/80 dark:text-slate-300"
         align={align}
       >
         <DropdownMenuItem
