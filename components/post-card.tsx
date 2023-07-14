@@ -29,7 +29,7 @@ export const PostCard: React.FC<PostCardProps> = ({
   imageUrl,
 }) => {
   return (
-    <Link href={`/posts/${id}`} className="active:scale-[0.95]">
+    <Link href={`/posts/${id}`} className="transition-all duration-150 active:scale-[0.95]">
       <Card className="hover:border-slate-600/80 transition-all duration-150">
         <CardHeader className="p-4">
           <div className="relative overflow-hidden rounded-md h-52">
