@@ -25,13 +25,15 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
   try {
-    const posts = await prismadb.category.findMany({
-      include: {
+    const categories = await prismadb.category.findMany({
+      select: {
+        id: true,
+        name: true,
         post: true,
       },
     });
 
-    return NextResponse.json(posts);
+    return NextResponse.json(categories);
   } catch (error) {
     return new NextResponse("Internal error", { status: 500 });
   }
