@@ -29,7 +29,11 @@ export async function GET(req: Request) {
       select: {
         id: true,
         name: true,
-        post: true,
+        post: {
+          select: {
+            imageUrl: true,
+          },
+        },
       },
     });
 
