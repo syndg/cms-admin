@@ -10,7 +10,7 @@ export async function GET(req: Request) {
   } catch (error) {
     return new NextResponse("Internal error", { status: 500 });
   }
-
+}
 export async function POST(req: Request) {
   try {
     const user = await currentUser();
@@ -33,6 +33,4 @@ export async function POST(req: Request) {
   } catch (error) {
     return new NextResponse("Internal error", { status: 500 });
   }
-}
-
 }
