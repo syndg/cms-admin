@@ -2,6 +2,15 @@ import { NextResponse } from "next/server";
 import { currentUser } from "@clerk/nextjs";
 import prismadb from "@/lib/prismadb";
 
+export async function GET(req: Request) {
+  try {
+    const posts = await prismadb.post.findMany();
+
+    return NextResponse.json(posts);
+  } catch (error) {
+    return new NextResponse("Internal error", { status: 500 });
+  }
+
 export async function POST(req: Request) {
   try {
     const user = await currentUser();
@@ -26,12 +35,4 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET(req: Request) {
-  try {
-    const posts = await prismadb.post.findMany();
-
-    return NextResponse.json(posts);
-  } catch (error) {
-    return new NextResponse("Internal error", { status: 500 });
-  }
 }
