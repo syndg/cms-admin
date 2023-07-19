@@ -3,8 +3,15 @@ import { currentUser } from "@clerk/nextjs";
 import prismadb from "@/lib/prismadb";
 
 export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const categoryId = searchParams.get("c") || undefined;
+
   try {
-    const posts = await prismadb.post.findMany();
+    const posts = await prismadb.post.findMany({
+      where: {
+        categoryId,
+      },
+    });
 
     return NextResponse.json(posts);
   } catch (error) {
