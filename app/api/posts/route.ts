@@ -11,6 +11,7 @@ export async function GET(req: Request) {
     return new NextResponse("Internal error", { status: 500 });
   }
 }
+
 export async function POST(req: Request) {
   try {
     const user = await currentUser();
